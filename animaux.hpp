@@ -19,15 +19,18 @@ struct Entity
 struct Mouton : public Entity
 {
     void alimentation();
+    int type = 0;
 };
 
 struct Loup : public Entity
 {
     void alimentation();
+    int type = 1;
 };
 
 struct Null_Entity : public Entity
 {
+    int type = 2;
 };
 
 struct Grille
@@ -37,4 +40,5 @@ struct Grille
     void manger_herbe(Mouton *m);
     void manger_mouton(Mouton *m, Loup *l);
     void renouvellement(int grille_herbe[]);
+    void deplacementf(Entity *Ent);
 };

@@ -44,15 +44,58 @@ int main()
     return 0;
 }
 
-void update(Loup *l, Grille g)
-{if(){
-    srand(time(NULL));
-    int b = rand() % 4;
-    l->deplacement(b);
+void update(Loup *l; Grille)
+{
+    if ()
+    {
+        srand(time(NULL));
+        int b = rand() % 4;
+        l->deplacement(b);
+    }
 }
-}
-void update(blabalbla){
-    for(int i=0;i<GRID_SIZE*GRID_SIZE;i++){
-        
+void update(Grille g)
+{
+    for (int i = 0; i < n * n; i++)
+    {
+        if (g.grille_animaux[i]->type == 0)
+        {
+            if (g.grille_herbe[i + 1] == 1)
+            {
+                g.grille_animaux[i]->y += 1;
+                g.grille_animaux[i + 1] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i + 1]);
+            }
+            else if (g.grille_herbe[i - 1] == 1)
+            {
+                g.grille_animaux[i]->y -= 1;
+                g.grille_animaux[i - 1] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i - 1]);
+            }
+            else if (g.grille_herbe[i + n] == 1)
+            {
+                g.grille_animaux[i]->x += 1;
+                g.grille_animaux[i + n] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i + n]);
+            }
+            else if (g.grille_herbe[i - n] == 1)
+            {
+                g.grille_animaux[i]->x -= 1;
+                g.grille_animaux[i - n] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i - n]);
+            }
+            else
+            {
+                g.deplacement(g.grille_animaux[i]);
+            }
+            if ()
+        }
     }
 }
