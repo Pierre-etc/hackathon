@@ -2,6 +2,7 @@
 
 void def_animaux()
 {
+
 }
 int position(Entity *e)
 {
@@ -10,12 +11,11 @@ int position(Entity *e)
 
 inline void Grille::manger_herbe(Mouton *m)
 {
-    if (grille_herbe[position(m)] == 1)
-    {
-        grille_herbe[position(m)] = 0;
-        m->E = m->E + 15;
-    }
+    
+        grille_herbe[position(m)] = 0;      
+        m->alimentation();
 }
+
 
 inline void Mouton::alimentation()
 {
