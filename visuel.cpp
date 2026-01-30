@@ -1,6 +1,4 @@
 #include "visuel.hpp"
-
-
 #include <SDL.h>
 #include "const.hpp"
 #include <stdio.h>

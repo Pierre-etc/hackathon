@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-srand(time(NULL));
-int b = rand() % 10;
+
+
 
 void def_animaux()
 {
@@ -20,13 +20,14 @@ inline void Grille::manger_herbe(Mouton *m)
 
     grille_herbe[position(m)] = 0;      
     m->alimentation();
+    
 }
 
 inline void Grille::manger_mouton(Mouton *m, Loup *l)
 {
     l->alimentation();
     grille_animaux[position(m)] = 0;
-    m->mort();
+    delete m;
 }
 
 
@@ -41,6 +42,7 @@ inline void Grille::renouvellement(int grille_herbe[])
     {
         if (grille_herbe[i] == 0)
         {
+            srand(time(NULL));
             int b = rand() % 10;
             if (b == 2)
             { grille_herbe[i]=1;
