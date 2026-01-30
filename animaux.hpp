@@ -1,7 +1,7 @@
 
+#include <iostream>
 #include "const.hpp"
 
-#include <iostream>
 #pragma once
 
 struct Entity
@@ -32,8 +32,8 @@ struct Null_Entity : public Entity
 
 struct Grille
 {
-    Entity *grille_animaux[n * n];
-    int grille_herbe[n * n];
+    Entity *grille_animaux[GRID_SIZE * GRID_SIZE];
+    int grille_herbe[GRID_SIZE * GRID_SIZE];
     void manger_herbe(Mouton *m);
     void manger_mouton(Mouton *m, Loup *l);
     void renouvellement(int grille_herbe[]);

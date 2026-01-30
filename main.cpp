@@ -1,7 +1,7 @@
 #include "animaux.hpp"
 #include "visuel.hpp"
 #include "const.hpp"
-#include <SDL.h>
+#include <sdl.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,7 +44,7 @@ int main()
     return 0;
 }
 
-void update(Loup *l;Grille)
+void update(Loup *l, Grille g)
 {if(){
     srand(time(NULL));
     int b = rand() % 4;
@@ -52,7 +52,7 @@ void update(Loup *l;Grille)
 }
 }
 void update(blabalbla){
-    for(int i=0;i<n*n;i++){
+    for(int i=0;i<GRID_SIZE*GRID_SIZE;i++){
         
     }
 }
