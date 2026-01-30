@@ -54,5 +54,5 @@ inline void Entity::reproduction()
 
 inline void Entity::viellissement()
 {
-    Age+=1;
+    age+=1;
 }
