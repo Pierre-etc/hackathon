@@ -17,8 +17,8 @@ int position(Entity *e)
 
 inline void Grille::manger_herbe(Mouton *m)
 {
-    
-    grille_herbe[position(m)] = 0;
+
+    grille_herbe[position(m)] = 0;      
     m->alimentation();
     
 }
@@ -27,7 +27,13 @@ inline void Grille::manger_mouton(Mouton *m, Loup *l)
 {
     l->alimentation();
     grille_animaux[position(m)] = 0;
-    m->mort();
+    delete m;
+}
+
+
+inline void Mouton::alimentation()
+{
+    E += 15;
 }
 
 inline void Grille::renouvellement(int grille_herbe[])
@@ -45,14 +51,43 @@ inline void Grille::renouvellement(int grille_herbe[])
         }
     }
 }
-
-inline void Entity::vieillir()
+inline void Loup::alimentation()
 {
-    age++;
+    E += 35;
 }
 
 inline void Grille::manger_mouton(Mouton *m, Loup *l)
 {
     l->alimentation();
     grille_animaux[position(m)] = 0;
+}
+
+inline void Entity::deplacement(int i)
+{
+    if (i == 0)
+    {
+        x += 1;
+    }
+    if (i == 1)
+    {
+        x -= 1;
+    }
+    if (i == 2)
+    {
+        y += 1;
+    }
+    if (i == 3)
+    {
+        y -= 1;
+    }
+}
+
+inline void Entity::reproduction()
+{
+    E -= 20;
+}
+
+inline void Entity::viellissement()
+{
+    age+=1;
 }

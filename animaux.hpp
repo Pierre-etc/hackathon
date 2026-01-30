@@ -13,23 +13,19 @@ struct Entity
     int E;
     int age;
 
-    void mort(){}
-    void vieillir(){}
-    
+    void deplacement(int i);
+    void reproduction();
+    void viellissement();
 };
 
 struct Mouton : public Entity
 {
-    void deplacement(){}
-    void alimentation(){}
-    void reproduction(){}
+    void alimentation();
 };
 
 struct Loup : public Entity
 {
-    void deplacement(){}
-    void alimentation(){}
-    void reproduction(){}
+    void alimentation();
 };
 
 struct Grille{
