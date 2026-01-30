@@ -2,6 +2,7 @@
 
 void def_animaux()
 {
+
 }
 int position(Entity *e)
 {
@@ -15,4 +16,9 @@ inline void Grille::manger_herbe(Mouton *m)
         grille_herbe[position(m)] = 0;
         m->E = m->E + 15;
     }
+}
+
+inline void Entity::vieillir()
+{
+    age++;
 }

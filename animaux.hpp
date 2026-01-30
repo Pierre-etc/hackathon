@@ -11,9 +11,10 @@ struct Entity
     int x;
     int y;
     int E;
-    int Age;
+    int age;
 
     void mort(){}
+    void vieillir()
     
 };
 
