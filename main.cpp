@@ -8,11 +8,11 @@
 #include "visuel.hpp"
 #include "const.hpp"
 
-int* i_to_xy(int i)
+int *i_to_xy(int i)
 {
     int arr[2];
-    arr[0] = i/10;
-    arr[1] = i%10;
+    arr[0] = i / 10;
+    arr[1] = i % 10;
     return &arr[0];
 }
 
@@ -56,6 +56,9 @@ int main()
 // srand(time(NULL));
 // int b = rand() % 4;
 // l->deplacement(b);
+void initialisation()
+{
+}
 void update(Grille g)
 {
     // Pour chaque EMPLACEMENT
@@ -67,7 +70,7 @@ void update(Grille g)
         Entity *entity = g.grille_animaux[i];
 
         // S'il y a un MOUTON à cet emplacement
-        if(entity->type == 0)
+        if (entity->type == 0)
         {
             if (g.grille_herbe[i + 1] == 1)
             {
@@ -141,7 +144,7 @@ void update(Grille g)
                 }
                 if (V && g.grille_animaux[i]->type == 2)
                 {
-                    Mouton *pbm = new Mouton(i/GRID_SIZE,i%GRID_SIZE,20,0);
+                    Mouton *pbm = new Mouton(i / GRID_SIZE, i % GRID_SIZE, 20, 0);
                     g.grille_animaux[i] = pbm;
                 }
             }
@@ -149,4 +152,3 @@ void update(Grille g)
         }
     }
 }
-
