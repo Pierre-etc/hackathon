@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include "const.hpp"
 #include <stdio.h>
-
+#include <iostream>
 
 
 
@@ -38,7 +38,7 @@ bool init(SDL_Window **window, SDL_Renderer **renderer)
 }
 
 
-
+#if 0
 
 void handle_input(bool *running, const Uint8 *keys, Entity *player, bool *new_bullet_demand)
 {
@@ -88,6 +88,10 @@ void render(SDL_Renderer *renderer, GAME_STATE Game)
     SDL_RenderPresent(renderer);
 }
 
+#endif
+
+
+
 void cleanup(SDL_Window *window, SDL_Renderer *renderer)
 {
     if (renderer)
@@ -95,4 +99,31 @@ void cleanup(SDL_Window *window, SDL_Renderer *renderer)
     if (window)
         SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+
+
+int main(){
+
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
+    bool bien_initialise = init(&window, &renderer);
+    if (bien_initialise){
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // couleur noire (0, 0, 0), opaque (255)
+    SDL_RenderClear(renderer); // On efface tout sous un voile noir opaque
+
+    SDL_Rect rect = { 10, 10, 50, 100
+            };
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    SDL_RenderFillRect(renderer, &rect);
+    SDL_RenderPresent(renderer);
+
+    cleanup(window, renderer);
+    }
+    else{
+        std::cout << "error ! "<< std::endl;
+    }
+    
+
+    
 }
