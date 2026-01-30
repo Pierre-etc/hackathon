@@ -12,7 +12,7 @@ inline Mouton ::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { ty
 
 inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
 
-Mouton *constructeur_mouton(int x, int y, int E, int Age)
+/*Mouton *constructeur_mouton(int x, int y, int E, int Age)
 {
     Mouton *m = malloc(sizeof(Mouton));
     m.x = x;
@@ -20,7 +20,7 @@ Mouton *constructeur_mouton(int x, int y, int E, int Age)
     m.E = E;
     m.age = Age;
     return m
-}
+}*/ //essai d'un malloc mais ne marche pas en C++
 int position(Entity *e)
 {
     return GRID_SIZE * (e->y) + GRID_SIZE * (e->x);

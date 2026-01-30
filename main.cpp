@@ -105,7 +105,7 @@ void update(Grille g)
                 }
                 if (V && g.grille_animaux[i]->type == 2)
                 {
-                    Mouton *pbm = constructeur_mouton(i / GRID_SIZE, i % GRID_SIZE, 20, 0);
+                    Mouton *pbm = new Mouton(i/GRID_SIZE,i%GRID_SIZE,20,0);
                     g.grille_animaux[i] = pbm;
                 }
             }
