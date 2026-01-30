@@ -10,9 +10,14 @@ int position(Entity *e)
 
 inline void Grille::manger_herbe(Mouton *m)
 {
-    if (grille_herbe[position(m)] == 1)
-    {
+    
         grille_herbe[position(m)] = 0;
-        M->alimentation();
-    }
+        m->alimentation();
+    
+}
+
+inline void Grille::manger_mouton(Mouton *m,Loup *l){
+    l->alimentation();
+    grille_animaux[position(m)]=0;
+    
 }
