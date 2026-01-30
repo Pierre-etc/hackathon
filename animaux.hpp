@@ -1,5 +1,6 @@
 #ifndef ANIMAUX_HPP
 #define ANIMAUX_HPP
+#include "const.hpp"
 
 
 #include <iostream>
@@ -17,6 +18,13 @@ class Mouton : public Entity
 
 };
 
+struct Grille{
+    Entity *grille_animaux[n*n];
+    int grille_herbe[n*n];
+    void manger_herbe(){
+        if()
+    }
+}
 
 
 
