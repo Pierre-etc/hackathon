@@ -9,7 +9,9 @@ void def_animaux()
 {
 }
 
-inline Mouton ::Entity(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
+inline Grille::Grille(){}
+
+inline Mouton ::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
 
 inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
 

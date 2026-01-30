@@ -56,8 +56,18 @@ int main()
 // srand(time(NULL));
 // int b = rand() % 4;
 // l->deplacement(b);
-void initialisation()
+Grille* initialisation()
 {
+    Grille *pg = new Grille();
+    for (i = 0; i < GRID_SIZE; i += 3)
+    {
+        pg->grille_animaux[i] = new Mouton(i / GRID_SIZE, i % GRID_SIZE, 20, 0);
+    }
+    for (i = 0; i < GRID_SIZE * GRID_SIZE; i++)
+    {
+        pg->grille_herbe[i]=0;
+    }
+    return pg
 }
 void update(Grille g)
 {
