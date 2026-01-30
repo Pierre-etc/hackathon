@@ -8,12 +8,28 @@
 void def_animaux()
 {
 }
+
+inline Grille::Grille(){}
+
+inline Mouton::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
+
+inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
+
+/*Mouton *constructeur_mouton(int x, int y, int E, int Age)
+{
+    Mouton *m = malloc(sizeof(Mouton));
+    m.x = x;
+    m.y = y;
+    m.E = E;
+    m.age = Age;
+    return m
+}*/ //essai d'un malloc mais ne marche pas en C++
 int position(Entity *e)
 {
-    return e->x + n * (e->y);
+    return (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(Mouton *m)
+inline void Grille::manger_herbe(Mouton*m)
 {
 
     grille_herbe[position(m)] = 0;
@@ -34,7 +50,7 @@ inline void Mouton::alimentation()
 
 inline void Grille::renouvellement(int grille_herbe[])
 {
-    for (int i = 0; i < n * n; i++)
+    for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++)
     {
         if (grille_herbe[i] == 0 && grille_animaux[i]->type != 2)
         {
@@ -44,7 +60,7 @@ inline void Grille::renouvellement(int grille_herbe[])
             {
                 grille_herbe[i] = 1;
 
-            } // b nombre aléatoire généré entre 0 et 9, on veut une proba de
+            } // b nombre aléatoire généré entre 0 et 9, oGRID_SIZEveut une proba de
         }
     }
 }
@@ -85,10 +101,54 @@ inline void Entity::viellissement()
 
 inline void Grille::deplacementf(Entity *Ent)
 {
-    Null_Entity* a;
+    Null_Entity *a;
     grille_animaux[position(Ent)] = a;
+    for (int j = 0; j < 19; j++)
+    {
+        srand(time(NULL));
+        int i = rand() % 4;
+        if (i == 0 && position(Ent) + GRID_SIZE < GRID_SIZE * GRID_SIZE)
+        {
+            if (grille_animaux[position(Ent) + GRID_SIZE]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else if (i == 1 && position(Ent) - GRID_SIZE >= 0)
+        {
+            if (grille_animaux[position(Ent) - GRID_SIZE]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else if (i == 2 && position(Ent) + 1 < GRID_SIZE * (1 + Ent->x))
+        {
+            if (grille_animaux[position(Ent) + 1]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else if (i == 3 && Ent->y != 0)
+        {
+            if (grille_animaux[position(Ent) - 1]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else
+        {
+            grille_animaux[position(Ent)] = Ent;
+        }
+    }
+}
+
+int deplacement_aleatoire(Entity *e)
+{
     srand(time(NULL));
     int i = rand() % 4;
-    Ent->deplacement(i);
-    grille_animaux[position(Ent)] = Ent;
+    e->deplacement(i);
 }

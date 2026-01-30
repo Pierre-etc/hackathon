@@ -10,22 +10,26 @@ struct Entity
     int y;
     int E;
     int age;
-
+    int type;
+public:
+    Entity(int x, int y, int E, int age);
     void deplacement(int i);
     void reproduction();
     void viellissement();
+    
 };
 
 struct Mouton : public Entity
 {
-    void alimentation();
+    Mouton(int x, int t, int E, int age);
     int type = 0;
+    void alimentation();
 };
 
 struct Loup : public Entity
 {
-    void alimentation();
     int type = 1;
+    void alimentation();
 };
 
 struct Null_Entity : public Entity
@@ -41,4 +45,7 @@ struct Grille
     void manger_mouton(Mouton *m, Loup *l);
     void renouvellement(int grille_herbe[]);
     void deplacementf(Entity *Ent);
+    Grille();
 };
+Mouton constructeur_mouton(int x, int y, int E, int Age);
+int position(Entity *e);
