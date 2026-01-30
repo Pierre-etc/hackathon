@@ -3,6 +3,10 @@
 #include "const.hpp"
 #include <SDL.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 int main()
 {
     // Générer la fenêtre graphique
@@ -40,6 +44,15 @@ int main()
     return 0;
 }
 
-void update(Loup *l)
-{
+void update(Loup *l;Grille)
+{if(){
+    srand(time(NULL));
+    int b = rand() % 4;
+    l->deplacement(b);
+}
+}
+void update(blabalbla){
+    for(int i=0;i<n*n;i++){
+        
+    }
 }
