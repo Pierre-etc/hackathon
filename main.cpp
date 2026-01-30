@@ -53,9 +53,7 @@ int main()
     return 0;
 }
 
-// srand(time(NULL));
-// int b = rand() % 4;
-// l->deplacement(b);
+
 void update(Grille g)
 {
     // Pour chaque EMPLACEMENT

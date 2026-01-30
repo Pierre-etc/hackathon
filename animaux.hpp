@@ -43,6 +43,6 @@ struct Grille
     void renouvellement(int grille_herbe[]);
     void deplacementf(Entity *Ent);
 };
-
+inline void Grille::manger_herbe(Entity*m);
 Mouton constructeur_mouton(int x, int y, int E, int Age);
 int position(Entity *e);

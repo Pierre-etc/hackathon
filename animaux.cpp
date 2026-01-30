@@ -142,3 +142,10 @@ inline void Grille::deplacementf(Entity *Ent)
         }
     }
 }
+
+int deplacement_aleatoire(Entity *e)
+{
+    srand(time(NULL));
+    int i = rand() % 4;
+    e->deplacement(i);
+}
