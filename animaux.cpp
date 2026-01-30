@@ -13,14 +13,14 @@ int position(Entity *e)
     return GRID_SIZE* (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(MoutoGRID_SIZE*m)
+inline void Grille::manger_herbe(Mouton*m)
 {
 
     grille_herbe[position(m)] = 0;
     m->alimentation();
 }
 
-inline void Grille::manger_mouton(MoutoGRID_SIZE*m, Loup *l)
+inline void Grille::manger_mouton(Mouton*m, Loup *l)
 {
     l->alimentation();
     grille_animaux[position(m)] = 0;
