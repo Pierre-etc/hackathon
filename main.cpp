@@ -1,7 +1,7 @@
 #include "animaux.hpp"
 #include "visuel.hpp"
 #include "const.hpp"
-#include <sdl.h>
+#include <SDL.h>
 
 #include <stdio.h>
 #include <stdlib.h>
