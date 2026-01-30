@@ -23,10 +23,10 @@ inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age)
 }*/ //essai d'un malloc mais ne marche pas en C++
 int position(Entity *e)
 {
-    return GRID_SIZE * (e->y) + GRID_SIZE * (e->x);
+    return (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(Mouton *m)
+inline void Grille::manger_herbe(Entity*m)
 {
 
     grille_herbe[position(m)] = 0;

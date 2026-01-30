@@ -1,12 +1,21 @@
-#include "animaux.hpp"
-#include "visuel.hpp"
-#include "const.hpp"
 #include <SDL.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#include "animaux.hpp"
+#include "visuel.hpp"
+#include "const.hpp"
+
+int* i_to_xy(int i)
+{
+    int arr[2];
+    arr[0] = i/10;
+    arr[1] = i%10;
+    return &arr[0];
+}
+
 int main()
 {
     // Générer la fenêtre graphique
@@ -49,21 +58,48 @@ int main()
 // l->deplacement(b);
 void update(Grille g)
 {
+    // Pour chaque EMPLACEMENT
     for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++)
     {
-        if (g.grille_animaux[i]->type == 0)
+        int *position_grille = i_to_xy(i);
+        int x = position_grille[0];
+        int y = position_grille[1];
+        Entity *entity = g.grille_animaux[i];
+
+        // S'il y a un MOUTON à cet emplacement
+        if(entity->type == 0)
         {
-            bool V = (g.grille_animaux[i]->E > 50);
-            g.grille_animaux[i]->E -= 10;
-            g.grille_animaux[i]->age += 1;
-            bool VM = (g.grille_animaux[i]->E <= 0 && g.grille_animaux[i]->age > 90);
-            if (V)
+            if (g.grille_herbe[i + 1] == 1)
             {
-                g.grille_animaux[i]->reproduction();
+                g.grille_animaux[i]->y += 1;
+                g.grille_animaux[i + 1] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = &a;
+                manger_herbe(g.grille_animaux[i + 1]);
             }
-            if (VM)
+            else if (g.grille_herbe[i - 1] == 1)
             {
-                free(g.grille_animaux[i]);
+                g.grille_animaux[i]->y -= 1;
+                g.grille_animaux[i - 1] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i - 1]);
+            }
+            else if (g.grille_herbe[i + GRID_SIZE] == 1)
+            {
+                g.grille_animaux[i]->x += 1;
+                g.grille_animaux[i + GRID_SIZE] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i + GRID_SIZE]);
+            }
+            else if (g.grille_herbe[i - GRID_SIZE] == 1)
+            {
+                g.grille_animaux[i]->x -= 1;
+                g.grille_animaux[i - GRID_SIZE] = g.grille_animaux[i];
+                Null_Entity a;
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i - GRID_SIZE]);
             }
             else
             {
@@ -109,6 +145,8 @@ void update(Grille g)
                     g.grille_animaux[i] = pbm;
                 }
             }
+            if ()
         }
     }
 }
+
