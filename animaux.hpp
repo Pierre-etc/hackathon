@@ -26,7 +26,7 @@ struct Loup : public Entity
     void alimentation();
 };
 
-struct Null_Entity
+struct Null_Entity : public Entity
 {
 };
 
