@@ -1,5 +1,4 @@
-#ifndef VISUEL_H
-#define VISUEL_H
+#pragma once
 
 
 
@@ -29,4 +28,3 @@ void affiche_ornithorynque(SDL_Renderer *renderer, int position_x, int position_
 
 
 
-#endif

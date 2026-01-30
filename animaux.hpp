@@ -1,9 +1,7 @@
-#ifndef ANIMAUX_HPP
-#define ANIMAUX_HPP
-#include "const.hpp"
-
 
 #include <iostream>
+#include "const.hpp"
+
 #pragma once
 
 struct Entity
@@ -11,45 +9,36 @@ struct Entity
     int x;
     int y;
     int E;
-    int Age;
+    int age;
 
-    void mort(){}
-    
+    void deplacement(int i);
+    void reproduction();
+    void viellissement();
 };
 
 struct Mouton : public Entity
 {
-    void deplacement(){}
-    void alimentation(){}
-    void reproduction(){}
+    void alimentation();
+    int type = 0;
 };
 
 struct Loup : public Entity
 {
-    void deplacement(){}
-    void alimentation(){}
-    void reproduction(){}
+    void alimentation();
+    int type = 1;
 };
 
-struct Grille{
-    Entity *grille_animaux[n*n];
-    int grille_herbe[n*n];
+struct Null_Entity : public Entity
+{
+    int type = 2;
+};
+
+struct Grille
+{
+    Entity *grille_animaux[GRID_SIZE * GRID_SIZE];
+    int grille_herbe[GRID_SIZE * GRID_SIZE];
     void manger_herbe(Mouton *m);
-    void manger_mouton(Mouton*m,Loup*l);
+    void manger_mouton(Mouton *m, Loup *l);
+    void renouvellement(int grille_herbe[]);
+    void deplacementf(Entity *Ent);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif
