@@ -22,7 +22,7 @@ struct Grille{
     Entity *grille_animaux[n*n];
     int grille_herbe[n*n];
     void manger_herbe(Mouton *m);
-}
+};
 
 
 
