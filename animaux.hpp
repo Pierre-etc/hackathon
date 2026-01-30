@@ -14,7 +14,7 @@ struct Entity
     int age;
 
     void mort(){}
-    void vieillir()
+    void vieillir(){}
     
 };
 

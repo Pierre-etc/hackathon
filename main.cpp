@@ -18,7 +18,7 @@ int main(){
     // Création des grilles du terrain et des animaux
     // Génération des animaux et de l'herbe
     // Ajout des animaux et de l'herbe dans les grilles
-    bool running = true;
+    bool running = false;
     while (running){
         // Update()
             // augmenter les âges
