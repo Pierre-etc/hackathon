@@ -33,6 +33,7 @@ struct Grille{
     int grille_herbe[n*n];
     void manger_herbe(Mouton *m);
     void manger_mouton(Mouton*m,Loup*l);
+    void renouvellement(int grille_herbe[]);
 };
 
 
