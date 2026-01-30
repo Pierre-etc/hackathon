@@ -10,17 +10,17 @@ void def_animaux()
 }
 int position(Entity *e)
 {
-    return GRID_SIZE* (e->y) + GRID_SIZE * (e->x);
+    return GRID_SIZE * (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(Mouton*m)
+inline void Grille::manger_herbe(Mouton *m)
 {
 
     grille_herbe[position(m)] = 0;
     m->alimentation();
 }
 
-inline void Grille::manger_mouton(Mouton*m, Loup *l)
+inline void Grille::manger_mouton(Mouton *m, Loup *l)
 {
     l->alimentation();
     grille_animaux[position(m)] = 0;
@@ -87,40 +87,45 @@ inline void Grille::deplacementf(Entity *Ent)
 {
     Null_Entity *a;
     grille_animaux[position(Ent)] = a;
-    srand(time(NULL));
-    int i = rand() % 4;
-    if (i == 0 && position(Ent) + GRID_SIZE< GRID_SIZE* GRID_SIZE)
+    for (int j = 0; j < 19; j++)
     {
-        if (grille_animaux[position(Ent) + GRID_SIZE]->type == 2)
+        srand(time(NULL));
+        int i = rand() % 4;
+        if (i == 0 && position(Ent) + GRID_SIZE < GRID_SIZE * GRID_SIZE)
         {
-            Ent->deplacement(i);
+            if (grille_animaux[position(Ent) + GRID_SIZE]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else if (i == 1 && position(Ent) - GRID_SIZE >= 0)
+        {
+            if (grille_animaux[position(Ent) - GRID_SIZE]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else if (i == 2 && position(Ent) + 1 < GRID_SIZE * (1 + Ent->x))
+        {
+            if (grille_animaux[position(Ent) + 1]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else if (i == 3 && Ent->y != 0)
+        {
+            if (grille_animaux[position(Ent) - 1]->type == 2)
+            {
+                Ent->deplacement(i);
+                grille_animaux[position(Ent)] = Ent;
+            }
+        }
+        else
+        {
             grille_animaux[position(Ent)] = Ent;
         }
     }
-    if (i == 1 && position(Ent) - GRID_SIZE>= 0)
-    {
-        if (grille_animaux[position(Ent) - GRID_SIZE]->type == 2)
-        {
-            Ent->deplacement(i);
-            grille_animaux[position(Ent)] = Ent;
-        }
-    }
-    if (i == 2 && position(Ent) +1 < GRID_SIZE*(1+ Ent->x))
-    {
-        if (grille_animaux[position(Ent) +1]->type == 2)
-        {
-            Ent->deplacement(i);
-            grille_animaux[position(Ent)] = Ent;
-        }
-    }
-    if (i == 3 && position(Ent) - 1 <= GRID_SIZE+ Ent->x)
-    {
-        if (grille_animaux[position(Ent) - GRID_SIZE]->type == 2)
-        {
-            Ent->deplacement(i);
-            grille_animaux[position(Ent)] = Ent;
-        }
-    }
-    Ent->deplacement(i);
-    grille_animaux[position(Ent)] = Ent;
 }

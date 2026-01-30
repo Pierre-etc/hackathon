@@ -95,7 +95,7 @@ void update(Grille g)
             {   
                 g.deplacement(g.grille_animaux[i]);
             }
-            if ()
+            
         }
     }
 }
