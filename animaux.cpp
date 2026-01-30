@@ -1,4 +1,3 @@
-#include animaux.hpp
 #include "animaux.hpp"
 
 
