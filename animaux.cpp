@@ -85,10 +85,42 @@ inline void Entity::viellissement()
 
 inline void Grille::deplacementf(Entity *Ent)
 {
-    Null_Entity* a;
+    Null_Entity *a;
     grille_animaux[position(Ent)] = a;
     srand(time(NULL));
     int i = rand() % 4;
+    if (i == 0 && position(Ent) + n <= n * n)
+    {
+        if (grille_animaux[position(Ent) + n]->type == 2)
+        {
+            Ent->deplacement(i);
+            grille_animaux[position(Ent)] = Ent;
+        }
+    }
+    if (i == 1 && position(Ent) - n >= 0)
+    {
+        if (grille_animaux[position(Ent) - n]->type == 2)
+        {
+            Ent->deplacement(i);
+            grille_animaux[position(Ent)] = Ent;
+        }
+    }
+    if (i == 2 && position(Ent) +1 >= n + Ent->x)
+    {
+        if (grille_animaux[position(Ent) +1]->type == 2)
+        {
+            Ent->deplacement(i);
+            grille_animaux[position(Ent)] = Ent;
+        }
+    }
+    if (i == 1 && position(Ent) - n >= 0)
+    {
+        if (grille_animaux[position(Ent) - n]->type == 2)
+        {
+            Ent->deplacement(i);
+            grille_animaux[position(Ent)] = Ent;
+        }
+    }
     Ent->deplacement(i);
     grille_animaux[position(Ent)] = Ent;
 }

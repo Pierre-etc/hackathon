@@ -92,7 +92,7 @@ void update(Grille g)
                 manger_herbe(g.grille_animaux[i - n]);
             }
             else
-            {
+            {   
                 g.deplacement(g.grille_animaux[i]);
             }
             if ()
