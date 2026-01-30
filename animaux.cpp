@@ -56,11 +56,6 @@ inline void Loup::alimentation()
     E += 35;
 }
 
-inline void Grille::manger_mouton(Mouton *m, Loup *l)
-{
-    l->alimentation();
-    grille_animaux[position(m)] = 0;
-}
 
 inline void Entity::deplacement(int i)
 {
