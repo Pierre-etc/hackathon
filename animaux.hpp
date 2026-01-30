@@ -47,6 +47,5 @@ struct Grille
     void deplacementf(Entity *Ent);
     Grille();
 };
-inline void Grille::manger_herbe(Entity*m);
 Mouton constructeur_mouton(int x, int y, int E, int Age);
 int position(Entity *e);
