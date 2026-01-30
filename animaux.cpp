@@ -45,10 +45,12 @@ inline void Grille::renouvellement(int grille_herbe[])
         }
     }
 }
+
 inline void Entity::vieillir()
 {
     age++;
 }
+
 inline void Grille::manger_mouton(Mouton *m, Loup *l)
 {
     l->alimentation();
