@@ -3,12 +3,6 @@
 #include "const.hpp"
 #include <SDL.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-srand(time(NULL));
-int a = rand() % 4;
 
 
 

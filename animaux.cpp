@@ -12,8 +12,8 @@ int position(Entity *e)
 inline void Grille::manger_herbe(Mouton *m)
 {
     
-        grille_herbe[position(m)] = 0;
-        m->alimentation();
+    grille_herbe[position(m)] = 0;
+    m->alimentation();
     
 }
 
