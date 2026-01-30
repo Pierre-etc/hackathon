@@ -1,5 +1,4 @@
-#ifndef VISUEL_H
-#define VISUEL_H
+#pragma once
 
 
 
@@ -30,4 +29,3 @@
 
 
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef CONST_HPP
-#define CONST_HPP
+#pragma once
 
 
 
@@ -28,4 +27,4 @@
 
 
 
-#endif
+

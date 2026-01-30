@@ -1,7 +1,5 @@
-#ifndef ANIMAUX_HPP
-#define ANIMAUX_HPP
-#include "const.hpp"
 
+#include "const.hpp"
 
 #include <iostream>
 #pragma once
@@ -28,26 +26,15 @@ struct Loup : public Entity
     void alimentation();
 };
 
-struct Grille{
-    Entity *grille_animaux[n*n];
-    int grille_herbe[n*n];
-    void manger_herbe(Mouton *m);
-    void manger_mouton(Mouton*m,Loup*l);
-    void renouvellement(int grille_herbe[]);
+struct Null_Entity
+{
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif
+struct Grille
+{
+    Entity *grille_animaux[n * n];
+    int grille_herbe[n * n];
+    void manger_herbe(Mouton *m);
+    void manger_mouton(Mouton *m, Loup *l);
+    void renouvellement(int grille_herbe[]);
+};
