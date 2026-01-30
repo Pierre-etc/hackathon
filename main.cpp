@@ -2,6 +2,24 @@
 #include "visuel.hpp"
 #include "const.hpp"
 
+
+
+int main(){
+
+
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
+    if (!init(&window, &renderer))
+    {
+        return 1;
+    }
+
+
+    bool running = true;
+
+
+
+
 int main(){
     // Générer la fenêtre graphique
     // Création des grilles du terrain et des animaux
