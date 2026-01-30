@@ -4,9 +4,13 @@
 
 
 
+
+
+    
+
+
+
 int main(){
-
-
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
     if (!init(&window, &renderer))
@@ -17,10 +21,6 @@ int main(){
 
     bool running = true;
 
-
-
-
-int main(){
     // Générer la fenêtre graphique
     // Création des grilles du terrain et des animaux
     // Génération des animaux et de l'herbe

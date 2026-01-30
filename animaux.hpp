@@ -24,7 +24,7 @@ struct Grille{
     void manger_herbe(){
         if()
     }
-}
+};
 
 
 
