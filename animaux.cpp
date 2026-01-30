@@ -8,7 +8,7 @@ int position(Entity *e)
     return e->x + n * (e->y);
 }
 
-void manger_herbe(Mouton *m)
+inline void Grille::manger_herbe(Mouton *m)
 {
     if (grille_herbe[position(m)] == 1)
     {
