@@ -1,3 +1,7 @@
+#ifndef ANIMAUX_HPP
+#define ANIMAUX_HPP
+
+
 #include <iostream>
 
 class Entity
@@ -12,3 +16,20 @@ class Mouton : public Entity
 {
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif
