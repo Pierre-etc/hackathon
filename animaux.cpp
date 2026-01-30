@@ -10,10 +10,10 @@ void def_animaux()
 }
 int position(Entity *e)
 {
-    return GRID_SIZE* (e->y) + GRID_SIZE * (e->x);
+    return (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(Mouton*m)
+inline void Grille::manger_herbe(Entity*m)
 {
 
     grille_herbe[position(m)] = 0;
