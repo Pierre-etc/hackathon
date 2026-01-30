@@ -4,6 +4,9 @@
 
 int main(){
     // Générer la fenêtre graphique
+    // Création des grilles du terrain et des animaux
+    // Génération des animaux et de l'herbe
+    // Ajout des animaux et de l'herbe dans les grilles
     bool running = true;
     while (running){
         // Update()
