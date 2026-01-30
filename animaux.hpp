@@ -12,6 +12,7 @@ typedef struct
     int age;
     int type;
 
+    Entity(int x, int y, int E, int age);
     void deplacement(int i);
     void reproduction();
     void viellissement();
@@ -43,4 +44,5 @@ struct Grille
     void deplacementf(Entity *Ent);
 };
 
+Mouton constructeur_mouton(int x, int y, int E, int Age);
 int position(Entity *e);

@@ -53,7 +53,6 @@ int main()
     return 0;
 }
 
-
 // srand(time(NULL));
 // int b = rand() % 4;
 // l->deplacement(b);
@@ -70,52 +69,43 @@ void update(Grille g)
         // S'il y a un MOUTON à cet emplacement
         if(entity->type == 0)
         {
-            Entity *mouton = entity;
-
-            // S'il y a de l'herbe en bas du mouton
-            if (y<GRID_SIZE-1 && g.grille_herbe[i + 1] == 1)
+            if (g.grille_herbe[i + 1] == 1)
             {
                 g.grille_animaux[i]->y += 1;
                 g.grille_animaux[i + 1] = g.grille_animaux[i];
                 Null_Entity a;
                 g.grille_animaux[i] = &a;
-                g.manger_herbe(g.grille_animaux[i + 1]);
+                manger_herbe(g.grille_animaux[i + 1]);
             }
-            // S'il y a de l'herbe en haut du mouton
-            else if (y>0 && g.grille_herbe[i - 1] == 1)
+            else if (g.grille_herbe[i - 1] == 1)
             {
                 g.grille_animaux[i]->y -= 1;
                 g.grille_animaux[i - 1] = g.grille_animaux[i];
                 Null_Entity a;
-                g.grille_animaux[i] = &a;
-                g.manger_herbe(g.grille_animaux[i - 1]);
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i - 1]);
             }
-            // S'il y a de l'herbe à droite du mouton
-            else if (x<GRID_SIZE-1 && g.grille_herbe[i + GRID_SIZE] == 1)
+            else if (g.grille_herbe[i + GRID_SIZE] == 1)
             {
                 g.grille_animaux[i]->x += 1;
                 g.grille_animaux[i + GRID_SIZE] = g.grille_animaux[i];
                 Null_Entity a;
-                g.grille_animaux[i] = &a;
-                g.manger_herbe(g.grille_animaux[i + GRID_SIZE]);
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i + GRID_SIZE]);
             }
-            // S'il y a de l'herbe à droite du mouton
-            else if (x>0 && g.grille_herbe[i - GRID_SIZE] == 1)
+            else if (g.grille_herbe[i - GRID_SIZE] == 1)
             {
                 g.grille_animaux[i]->x -= 1;
                 g.grille_animaux[i - GRID_SIZE] = g.grille_animaux[i];
                 Null_Entity a;
-                g.grille_animaux[i] = &a;
-                g.manger_herbe(g.grille_animaux[i - GRID_SIZE]);
+                g.grille_animaux[i] = a;
+                manger_herbe(g.grille_animaux[i - GRID_SIZE]);
             }
             else
             {   
-                mouton->deplacement(0);
+                g.deplacement(g.grille_animaux[i]);
             }
-        }
-        // S'il y a un LOUP à cet emplacement
-        if(entity->type == 1){
-
+            if ()
         }
     }
 }
