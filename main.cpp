@@ -59,7 +59,7 @@ void update(Grille g)
                 g.grille_animaux[i]->y += 1;
                 g.grille_animaux[i + 1] = g.grille_animaux[i];
                 Null_Entity a;
-                g.grille_animaux[i] = a;
+                g.grille_animaux[i] = &a;
                 manger_herbe(g.grille_animaux[i + 1]);
             }
             else if (g.grille_herbe[i - 1] == 1)
