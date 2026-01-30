@@ -44,7 +44,6 @@ int main()
     return 0;
 }
 
-
 // srand(time(NULL));
 // int b = rand() % 4;
 // l->deplacement(b);
@@ -54,43 +53,62 @@ void update(Grille g)
     {
         if (g.grille_animaux[i]->type == 0)
         {
-            if (g.grille_herbe[i + 1] == 1)
+            bool V = (g.grille_animaux[i]->E > 50);
+            g.grille_animaux[i]->E -= 10;
+            g.grille_animaux[i]->age += 1;
+            bool VM = (g.grille_animaux[i]->E <= 0 && g.grille_animaux[i]->age > 90);
+            if (V)
             {
-                g.grille_animaux[i]->y += 1;
-                g.grille_animaux[i + 1] = g.grille_animaux[i];
-                Null_Entity a;
-                g.grille_animaux[i] = &a;
-                manger_herbe(g.grille_animaux[i + 1]);
+                g.grille_animaux[i]->reproduction();
             }
-            else if (g.grille_herbe[i - 1] == 1)
+            if (VM)
             {
-                g.grille_animaux[i]->y -= 1;
-                g.grille_animaux[i - 1] = g.grille_animaux[i];
-                Null_Entity a;
-                g.grille_animaux[i] = a;
-                manger_herbe(g.grille_animaux[i - 1]);
-            }
-            else if (g.grille_herbe[i + GRID_SIZE] == 1)
-            {
-                g.grille_animaux[i]->x += 1;
-                g.grille_animaux[i + GRID_SIZE] = g.grille_animaux[i];
-                Null_Entity a;
-                g.grille_animaux[i] = a;
-                manger_herbe(g.grille_animaux[i + GRID_SIZE]);
-            }
-            else if (g.grille_herbe[i - GRID_SIZE] == 1)
-            {
-                g.grille_animaux[i]->x -= 1;
-                g.grille_animaux[i - GRID_SIZE] = g.grille_animaux[i];
-                Null_Entity a;
-                g.grille_animaux[i] = a;
-                manger_herbe(g.grille_animaux[i - GRID_SIZE]);
+                free(g.grille_animaux[i]);
             }
             else
-            {   
-                g.deplacement(g.grille_animaux[i]);
+            {
+                if (g.grille_herbe[i + 1] == 1)
+                {
+                    g.grille_animaux[i]->y += 1;
+                    g.grille_animaux[i + 1] = g.grille_animaux[i];
+                    Null_Entity a;
+                    g.grille_animaux[i] = &a;
+                    manger_herbe(g.grille_animaux[i + 1]);
+                }
+                else if (g.grille_herbe[i - 1] == 1)
+                {
+                    g.grille_animaux[i]->y -= 1;
+                    g.grille_animaux[i - 1] = g.grille_animaux[i];
+                    Null_Entity a;
+                    g.grille_animaux[i] = a;
+                    manger_herbe(g.grille_animaux[i - 1]);
+                }
+                else if (g.grille_herbe[i + GRID_SIZE] == 1)
+                {
+                    g.grille_animaux[i]->x += 1;
+                    g.grille_animaux[i + GRID_SIZE] = g.grille_animaux[i];
+                    Null_Entity a;
+                    g.grille_animaux[i] = a;
+                    manger_herbe(g.grille_animaux[i + GRID_SIZE]);
+                }
+                else if (g.grille_herbe[i - GRID_SIZE] == 1)
+                {
+                    g.grille_animaux[i]->x -= 1;
+                    g.grille_animaux[i - GRID_SIZE] = g.grille_animaux[i];
+                    Null_Entity a;
+                    g.grille_animaux[i] = a;
+                    manger_herbe(g.grille_animaux[i - GRID_SIZE]);
+                }
+                else
+                {
+                    g.deplacement(g.grille_animaux[i]);
+                }
+                if (V && g.grille_animaux[i]->type == 2)
+                {
+                    Mouton *pbm = constructeur_mouton(i / GRID_SIZE, i % GRID_SIZE, 20, 0);
+                    g.grille_animaux[i] = pbm;
+                }
             }
-            
         }
     }
 }

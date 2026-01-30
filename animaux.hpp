@@ -12,6 +12,7 @@ struct Entity
     int age;
     int type;
 
+    Entity(int x, int y, int E, int age);
     void deplacement(int i);
     void reproduction();
     void viellissement();
@@ -19,6 +20,7 @@ struct Entity
 
 struct Mouton : public Entity
 {
+    Mouton(int x, int y, int E, int age);
     void alimentation();
     int type = 0;
 };
@@ -43,3 +45,5 @@ struct Grille
     void renouvellement(int grille_herbe[]);
     void deplacementf(Entity *Ent);
 };
+
+Mouton constructeur_mouton(int x, int y, int E, int Age);

@@ -8,6 +8,19 @@
 void def_animaux()
 {
 }
+inline Mouton ::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
+
+inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
+
+Mouton *constructeur_mouton(int x, int y, int E, int Age)
+{
+    Mouton *m = malloc(sizeof(Mouton));
+    m.x = x;
+    m.y = y;
+    m.E = E;
+    m.age = Age;
+    return m
+}
 int position(Entity *e)
 {
     return GRID_SIZE * (e->y) + GRID_SIZE * (e->x);
