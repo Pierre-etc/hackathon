@@ -44,18 +44,13 @@ int main()
     return 0;
 }
 
-void update(Loup *l; Grille)
-{
-    if ()
-    {
-        srand(time(NULL));
-        int b = rand() % 4;
-        l->deplacement(b);
-    }
-}
+
+// srand(time(NULL));
+// int b = rand() % 4;
+// l->deplacement(b);
 void update(Grille g)
 {
-    for (int i = 0; i < n * n; i++)
+    for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++)
     {
         if (g.grille_animaux[i]->type == 0)
         {
@@ -75,21 +70,21 @@ void update(Grille g)
                 g.grille_animaux[i] = a;
                 manger_herbe(g.grille_animaux[i - 1]);
             }
-            else if (g.grille_herbe[i + n] == 1)
+            else if (g.grille_herbe[i + GRID_SIZE] == 1)
             {
                 g.grille_animaux[i]->x += 1;
-                g.grille_animaux[i + n] = g.grille_animaux[i];
+                g.grille_animaux[i + GRID_SIZE] = g.grille_animaux[i];
                 Null_Entity a;
                 g.grille_animaux[i] = a;
-                manger_herbe(g.grille_animaux[i + n]);
+                manger_herbe(g.grille_animaux[i + GRID_SIZE]);
             }
-            else if (g.grille_herbe[i - n] == 1)
+            else if (g.grille_herbe[i - GRID_SIZE] == 1)
             {
                 g.grille_animaux[i]->x -= 1;
-                g.grille_animaux[i - n] = g.grille_animaux[i];
+                g.grille_animaux[i - GRID_SIZE] = g.grille_animaux[i];
                 Null_Entity a;
                 g.grille_animaux[i] = a;
-                manger_herbe(g.grille_animaux[i - n]);
+                manger_herbe(g.grille_animaux[i - GRID_SIZE]);
             }
             else
             {   
