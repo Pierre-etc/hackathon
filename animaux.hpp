@@ -10,6 +10,7 @@ struct Entity
     int y;
     int E;
     int age;
+    int type;
 
     void deplacement(int i);
     void reproduction();

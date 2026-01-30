@@ -89,7 +89,7 @@ inline void Grille::deplacementf(Entity *Ent)
     grille_animaux[position(Ent)] = a;
     srand(time(NULL));
     int i = rand() % 4;
-    if (i == 0 && position(Ent) + GRID_SIZE<= GRID_SIZE* GRID_SIZE)
+    if (i == 0 && position(Ent) + GRID_SIZE< GRID_SIZE* GRID_SIZE)
     {
         if (grille_animaux[position(Ent) + GRID_SIZE]->type == 2)
         {
@@ -105,7 +105,7 @@ inline void Grille::deplacementf(Entity *Ent)
             grille_animaux[position(Ent)] = Ent;
         }
     }
-    if (i == 2 && position(Ent) +1 >= GRID_SIZE+ Ent->x)
+    if (i == 2 && position(Ent) +1 < GRID_SIZE*(1+ Ent->x))
     {
         if (grille_animaux[position(Ent) +1]->type == 2)
         {
