@@ -1,4 +1,6 @@
 
+#include "animaux.hpp"
+
 
 int main(){
     // Générer la fenêtre graphique
