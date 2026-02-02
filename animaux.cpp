@@ -8,7 +8,10 @@
 void def_animaux()
 {
 }
-inline Mouton ::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
+
+inline Grille::Grille(){}
+
+inline Mouton::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
 
 inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
 
@@ -26,7 +29,7 @@ int position(Entity *e)
     return (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(Entity*m)
+inline void Grille::manger_herbe(Mouton*m)
 {
 
     grille_herbe[position(m)] = 0;
@@ -141,4 +144,11 @@ inline void Grille::deplacementf(Entity *Ent)
             grille_animaux[position(Ent)] = Ent;
         }
     }
+}
+
+int deplacement_aleatoire(Entity *e)
+{
+    srand(time(NULL));
+    int i = rand() % 4;
+    e->deplacement(i);
 }

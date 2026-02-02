@@ -1,16 +1,8 @@
 #include "visuel.hpp"
-#include "const.hpp"
-
-#include <SDL.h>
-#include <opencv2/opencv.hpp>
-
-#include <stdio.h>
-#include <iostream>
-#include <string>
 
 using namespace cv;
 
-
+using namespace std::chrono_literals;
 
 
 
@@ -121,22 +113,74 @@ void carre(SDL_Renderer *renderer, int x, int y, int cote, int r, int g, int b){
 	SDL_RenderPresent(renderer);
 }
 
+
+
+void affiche_mouton(SDL_Renderer *renderer, int x, int y){
+	carre(renderer, x, y, 50, 255, 255, 255);
+}
+
+void affiche_herbe(SDL_Renderer *renderer, int x, int y){
+	carre(renderer, x, y, 50, 0, 255, 0);
+}
+
+
+
+
 void pixel(SDL_Renderer *renderer, int x, int y, int r, int g, int b){
 	carre(renderer, x, y, 1, r, g, b);
 }
 
 // on va faire une homothétie *100
 void affiche_ornithorynque(SDL_Renderer *renderer, int position_x, int position_y){
-	Mat mat = imread("psykokwak.png");
+	Mat mat = imread("perry100x100.png");
 	cv::Size s = mat.size();
 	int I = s.height;
 	int J = s.width;
 	for(int i = 0; i<I; ++i){
 		for (int j = 0; j<J; ++j){
-			cv::Vec3b rgb = mat.at<cv::Vec3b>(j, i);
-			pixel(renderer, 100*position_x + i, 100*position_y + j, rgb[0], rgb[1], rgb[2]);
+			cv::Vec3b rgb = mat.at<cv::Vec3b>(i, j);
+			int b = rgb[0];
+			int g = rgb[1];
+			int r = rgb[2];
+			pixel(renderer, 100*position_x + i, 100*position_y + j, r,g,b);
 		}
 	}
+}
+
+
+
+void affiche_image_100x100(SDL_Renderer *renderer, const char * image_path, int position_x, int position_y){
+	SDL_Surface* surface = IMG_Load(image_path); 
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface); 
+	SDL_FreeSurface(surface);
+	SDL_Rect destination;
+	destination.x = 100*position_x;
+	destination.y = 100*position_y;
+	destination.w = 100;
+	destination.h = 100;
+
+	SDL_RenderCopy(renderer, texture, NULL, &destination);
+	SDL_RenderPresent(renderer);
+	SDL_DestroyTexture(texture);
+}
+
+
+
+
+unsigned bounded_rand(unsigned range)
+{
+    for (unsigned x, r;;)
+        if (x = rand(), r = x % range, x - r <= -range)
+            return r;
+}
+
+
+template <typename T>
+T minimum(T x, T y){
+	if (x<y){
+		return x;
+	}
+	return y;
 }
 
 
@@ -151,15 +195,22 @@ int main(){
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // couleur noire (0, 0, 0), opaque (255)
 	SDL_RenderClear(renderer); // On efface tout sous un voile noir opaque
 
-	SDL_Rect rect = { 10, 10, 50, 100};
-	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-	SDL_RenderFillRect(renderer, &rect);
-	SDL_RenderPresent(renderer);
+	std::vector<const char *> paths = {"perry100x100.png", "perry_fluo100x100.png"};
+	// const char * path = "perry100x100.png";
+	// affiche_ornithorynque(renderer,2,2);
+	for (int i = 1; i<100; i++){
+		
+		int x = bounded_rand(10);
+		int y = bounded_rand(10);
+		affiche_image_100x100(renderer, paths[i%2], x, y);
+		long double tau = (1/sqrt(i));
+		
+		std::this_thread::sleep_for(std::chrono::duration<long double>(tau));
+		//std::this_thread::sleep_for(1s);
+	}
 	
-	affiche_ornithorynque(renderer,200,200);
-	affiche_ornithorynque(renderer,500,500);
-
-	waitKey(0);
+	
+	
 	cleanup(window, renderer);
 	}
 	else{
