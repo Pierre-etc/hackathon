@@ -50,11 +50,11 @@ inline void Mouton::alimentation()
     E += 15;
 }
 
-inline void Grille::renouvellement(int grille_herbe[])
+inline void Grille::renouvellement()
 {
     for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++)
     {
-        if (grille_herbe[i] == 0 && grille_animaux[i]->type != 2)
+        if (grille_herbe[i] == 0 && grille_animaux[i]->type == 2)
         {
             srand(time(NULL));
             int b = rand() % 10;

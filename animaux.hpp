@@ -45,7 +45,7 @@ struct Grille
     int grille_herbe[GRID_SIZE * GRID_SIZE];
     void manger_herbe(Mouton *m);
     void manger_mouton(Mouton *m, Loup *l, Null_Entity *pa);
-    void renouvellement(int grille_herbe[]);
+    void renouvellement();
     void deplacementf(Entity *Ent);
     Grille();
 };
