@@ -145,7 +145,6 @@ void update(Grille g)
                     g.grille_animaux[i] = pbm;
                 }
             }
-            if ()
         }
     }
 }

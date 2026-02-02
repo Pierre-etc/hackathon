@@ -4,7 +4,7 @@
 
 #pragma once
 
-typedef struct 
+struct Entity
 {
     int x;
     int y;
@@ -17,7 +17,7 @@ typedef struct
     void reproduction();
     void viellissement();
     void alimentation();
-}Entity;
+} ;
 
 struct Mouton : public Entity
 {
@@ -44,5 +44,5 @@ struct Grille
     void deplacementf(Entity *Ent);
 };
 
-Mouton constructeur_mouton(int x, int y, int E, int Age);
+// Mouton constructeur_mouton(int x, int y, int E, int Age);
 int position(Entity *e);
