@@ -9,12 +9,13 @@ void def_animaux()
 {
 }
 
-inline Grille::Grille(){}
+inline Grille::Grille() {}
 
 inline Mouton::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
 
 inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
 
+inline Loup::Loup(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 1; }
 /*Mouton *constructeur_mouton(int x, int y, int E, int Age)
 {
     Mouton *m = malloc(sizeof(Mouton));
@@ -23,23 +24,24 @@ inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age)
     m.E = E;
     m.age = Age;
     return m
-}*/ //essai d'un malloc mais ne marche pas en C++
+}*/
+// essai d'un malloc mais ne marche pas en C++
 int position(Entity *e)
 {
     return (e->y) + GRID_SIZE * (e->x);
 }
 
-inline void Grille::manger_herbe(Mouton*m)
+inline void Grille::manger_herbe(Mouton *m)
 {
 
     grille_herbe[position(m)] = 0;
     m->alimentation();
 }
 
-inline void Grille::manger_mouton(Mouton *m, Loup *l)
+inline void Grille::manger_mouton(Mouton *m, Loup *l, Null_Entity *pa)
 {
     l->alimentation();
-    grille_animaux[position(m)] = 0;
+    grille_animaux[position(m)] = pa;
     delete m;
 }
 
