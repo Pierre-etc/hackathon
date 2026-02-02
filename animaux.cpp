@@ -11,11 +11,11 @@ void def_animaux()
 
 inline Grille::Grille() {}
 
-inline Mouton::Mouton(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 0; }
+inline Mouton::Mouton(int x, int y, int E, int age, int T) : Entity(x, y, E, age, T) { type = 0; }
 
-inline Entity::Entity(int x, int y, int E, int age) : x(x), y(y), E(E), age(age) {}
+inline Entity::Entity(int x, int y, int E, int age, int T) : x(x), y(y), E(E), age(age), T(T) {}
 
-inline Loup::Loup(int x, int y, int E, int age) : Entity(x, y, E, age) { type = 1; }
+inline Loup::Loup(int x, int y, int E, int age, int T) : Entity(x, y, E, age, T) { type = 1; }
 /*Mouton *constructeur_mouton(int x, int y, int E, int Age)
 {
     Mouton *m = malloc(sizeof(Mouton));

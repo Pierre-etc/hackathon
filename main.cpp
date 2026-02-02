@@ -69,7 +69,7 @@ Grille *initialisation()
     }
     return pg
 }
-void update(Grille g)
+void update(Grille g, int t)
 {
     // Pour chaque EMPLACEMENT
     for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++)
@@ -80,12 +80,12 @@ void update(Grille g)
         Entity *entity = g.grille_animaux[i];
 
         // S'il y a un MOUTON à cet emplacement
-        if (entity->type == 0)
+        if (entity->type == 0 && entity->T == t)
         {
             bool V = (entity->E > 50);
             bool M = ((entity->age > 90) or (entity->E <= 0));
             Null_Entity pa = new Null_Entity();
-            entity->viellissement()
+            entity->viellissement();
             if (M)
             {
                 g.grille_animaux[i] = pa;
@@ -127,18 +127,19 @@ void update(Grille g)
                 }
                 if (V && g.grille_animaux[i]->type == 2)
                 {
-                    Mouton *pbm = new Mouton(i / GRID_SIZE, i % GRID_SIZE, 20, 0);
+                    Mouton *pbm = new Mouton(i / GRID_SIZE, i % GRID_SIZE, 20, 0,t+1);
                     g.grille_animaux[i] = pbm;
                     entity->reproduction();
                 }
+                entity->T += 1;
             }
         }
-        else if (entity->type == 1)
+        else if (entity->type == 1 && entity->T == t)
         {
             bool V = (entity->E > 80);
             bool M = ((entity->age > 90) or (entity->E <= 0));
             Null_Entity pa = new Null_Entity();
-            entity->viellissement()
+            entity->viellissement();
             if (M)
             {
                 g.grille_animaux[i] = pa;
@@ -180,10 +181,11 @@ void update(Grille g)
                 }
                 if (V && g.grille_animaux[i]->type == 2)
                 {
-                    Loup *pbl = new Loup(i / GRID_SIZE, i % GRID_SIZE, 40, 0);
+                    Loup *pbl = new Loup(i / GRID_SIZE, i % GRID_SIZE, 40, 0,t+1);
                     g.grille_animaux[i] = pbl;
                     entity->reproduction();
                 }
+                entity->T+=1
             }
         }
     }
